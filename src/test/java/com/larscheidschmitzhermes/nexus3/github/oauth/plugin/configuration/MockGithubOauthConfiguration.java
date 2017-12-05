@@ -19,4 +19,9 @@ public class MockGithubOauthConfiguration extends GithubOauthConfiguration {
     public Duration getPrincipalCacheTtl() {
         return principalCacheTtl;
     }
+
+    @Override
+    public String getGithubOrg() {
+        return null;
+    }
 }

@@ -113,9 +113,30 @@ public class GithubApiClient {
                 throw new GithubAuthenticationException("Given username does not match Github Username!");
             }
 
+            if (configuration.getGithubOrg() != null) {
+                checkUserInOrg(configuration.getGithubOrg(), token);
+            }
             return githubUser;
         } catch (IOException e) {
             throw new GithubAuthenticationException(e);
+        }
+    }
+
+    private void checkUserInOrg(String githubOrg, char[] token ) throws GithubAuthenticationException {
+        HttpGet orgsRequest = new HttpGet(configuration.getGithubUserOrgsUri());
+        orgsRequest.addHeader(constructGithubAuthorizationHeader(token));
+        HttpResponse orgsResponse;
+
+        Set<GithubOrg> orgs;
+        try {
+            orgsResponse = client.execute(orgsRequest);
+            orgs = mapper.readValue(new InputStreamReader(orgsResponse.getEntity().getContent()), new TypeReference<Set<GithubOrg>>() {});
+        } catch (IOException e) {
+            orgsRequest.releaseConnection();
+            throw new GithubAuthenticationException(e);
+        }
+        if (orgs.stream().noneMatch(org -> githubOrg.equals(org.getLogin()))) {
+            throw new GithubAuthenticationException("Given username not in Organization!");
         }
     }
 
