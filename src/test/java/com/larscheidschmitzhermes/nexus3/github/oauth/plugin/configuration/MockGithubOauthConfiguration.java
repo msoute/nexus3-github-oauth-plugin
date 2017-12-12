@@ -6,6 +6,8 @@ import java.time.Duration;
 public class MockGithubOauthConfiguration extends GithubOauthConfiguration {
     private Duration principalCacheTtl;
 
+    private String org = "TEST-ORG";
+
     public MockGithubOauthConfiguration(Duration principalCacheTtl) {
         this.principalCacheTtl = principalCacheTtl;
     }
@@ -22,6 +24,10 @@ public class MockGithubOauthConfiguration extends GithubOauthConfiguration {
 
     @Override
     public String getGithubOrg() {
-        return null;
+        return org;
+    }
+
+    public void setGithubOrg(String org) {
+        this.org = org;
     }
 }

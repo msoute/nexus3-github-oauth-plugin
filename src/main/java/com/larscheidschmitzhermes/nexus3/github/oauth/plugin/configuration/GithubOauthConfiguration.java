@@ -23,7 +23,7 @@ public class GithubOauthConfiguration {
 
     private static final String GITHUB_USER_TEAMS_PATH = "/user/teams";
 
-    private static final String GITHUB_USER_ORGS_PATH = " /user/orgs";
+    private static final String GITHUB_USER_ORGS_PATH = "/user/orgs";
 
     private static final Duration DEFAULT_PRINCIPAL_CACHE_TTL = Duration.ofMinutes(1);
 
