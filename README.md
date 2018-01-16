@@ -45,7 +45,7 @@ For the following commands we assume your nexus installation resides in `/opt/so
 The following lines will:
 - create a directory in the `nexus` / `kafka` maven repository
 - download the latest release from github
-- unzip the releae to the maven repository
+- unzip the releae to the mavehttps://github.com/larscheid-schmitzhermes/nexus3-github-oauth-plugin/pull/17n repository
 - add the plugin to the `karaf` `startup.properties`.
 ```shell
 mkdir -p /opt/sonatype/nexus/system/com/larscheidschmitzhermes/ &&\
@@ -63,6 +63,7 @@ Within the file you can configure the following properties:
 |---             |---                                      |---    |
 |`github.api.url`|URL of the Github API to operate against.|`https://api.github.com`|
 |`github.principal.cache.ttl`|[Java Duration](https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html#parse-java.lang.CharSequence-) for how long a given Access will be cached for. This is a tradeoff of how quickly access can be revoked and how quickly a Github user's rate limit will be reached for the Github User API. _Note:_ Github Enterprise does not have a rate limit!|`PT1M` (1 Minute)|
+|`github.org`|The Organization the user should be a member of.|----|
 
 This is what an example file would look like:
 ```properties
