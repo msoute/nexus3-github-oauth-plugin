@@ -45,7 +45,7 @@ For the following commands we assume your nexus installation resides in `/opt/so
 The following lines will:
 - create a directory in the `nexus` / `kafka` maven repository
 - download the latest release from github
-- unzip the releae to the mavehttps://github.com/larscheid-schmitzhermes/nexus3-github-oauth-plugin/pull/17n repository
+- unzip the releae to the maven repository
 - add the plugin to the `karaf` `startup.properties`.
 ```shell
 mkdir -p /opt/sonatype/nexus/system/com/larscheidschmitzhermes/ &&\
